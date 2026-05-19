@@ -1,0 +1,81 @@
+{
+	"info": {
+		"name": "E-commerce API Testing Collection",
+		"schema": "https://getpostman.com"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "TC_LF_01 - Successful Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"ValidPassword123\"\n}"
+						},
+						"url": { "raw": "https://example.com" }
+					}
+				},
+				{
+					"name": "TC_REG_01 - Successful Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"AlexQA\",\n    \"email\": \"alex.qa+test@example.com\",\n    \"password\": \"SecretPass123\"\n}"
+						},
+						"url": { "raw": "https://example.com" }
+					}
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "TC_SB_01 - Search Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://example.com",
+							"protocol": "https",
+							"host": [ "api", "example", "com" ],
+							"path": [ "v1", "products", "search" ],
+							"query": [
+								{ "key": "query", "value": "Phone" }
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "TC_ATC_01 - Add Item to Cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\": 101,\n    \"quantity\": 1\n}"
+						},
+						"url": { "raw": "https://example.com" }
+					}
+				}
+			]
+		}
+	]
+}
