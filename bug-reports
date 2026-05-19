@@ -1,0 +1,175 @@
+ID: BUG_LF_01
+* **Summary:** Application returns 500 Error when logging in with uppercase Email
+* **Environment:** Production, Google Chrome, Windows 11
+* **Severity:** Major
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open the Login page.
+  2. Enter an email in ALL CAPS (e.g., USER@EXAMPLE.COM).
+  3. Enter a valid password.
+  4. Click the "Login" button.
+* **Actual Result:** The page crashes and displays "500 Internal Server Error". User is not authorized.
+* **Expected result:** The system ignores case sensitivity, successfully authorizes the user, and redirects to the Dashboard (As per TC_LF_08).
+---
+ID: BUG_REG_02
+* **Summary:** Registration allowed with duplicate Email address
+* **Environment:** Staging, Mozilla Firefox, macOS
+* **Severity:** Critical
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open the Registration page.
+  2. Enter a valid username.
+  3. Enter an email address that is already registered in the system (e.g., alex.qa@example.com).
+  4. Enter a valid password and confirm it.
+  5. Click the "Register" button.
+* **Actual Result:** The account is successfully created. The database now contains two different users with the exact same email address.
+* **Expected result:** Registration fails. An error message appears under the Email field: "This email address is already registered" (As per TC_REG_07).
+---
+ID: BUG_SB_03
+* **Summary:** Search field doesn't trim trailing spaces, resulting in "No results found"
+* **Environment:** Production, Safari, iOS
+* **Severity:** Minor
+* **Priority:** Medium
+* **Steps to Reproduce:**
+  1. Open the Homepage.
+  2. Enter a valid product name with spaces at the end into the search bar (e.g., "Phone   ").
+  3. Click the search button.
+* **Actual Result:** The system searches for the literal string with spaces and returns "No results found".
+* **Expected result:** The system automatically trims trailing spaces and displays all matching "Phone" products (As per TC_SB_08).
+---
+ID: BUG_ATC_04
+* **Summary:** Cart counter resets to 0 after refreshing the page
+* **Environment:** Production, Google Chrome, Windows 11
+* **Severity:** Major
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open any product page.
+  2. Click the "Add to cart" button.
+  3. Verify that the cart counter in the header displays "1".
+  4. Press F5 to refresh the page.
+* **Actual Result:** After the page reloads, the cart icon counter changes back to "0", and the cart becomes empty.
+* **Expected result:** The cart state is preserved. The cart counter still displays "1" after the page reload (As per TC_ATC_05).
+ID: BUG_LF_01
+* **Summary:** Application returns 500 Error when logging in with uppercase Email
+* **Environment:** Production, Google Chrome, Windows 11
+* **Severity:** Major
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open the Login page.
+  2. Enter an email in ALL CAPS (e.g., USER@EXAMPLE.COM).
+  3. Enter a valid password.
+  4. Click the "Login" button.
+* **Actual Result:** The page crashes and displays "500 Internal Server Error". User is not authorized.
+* **Expected result:** The system ignores case sensitivity, successfully authorizes the user, and redirects to the Dashboard (As per TC_LF_08).
+---
+ID: BUG_REG_02
+* **Summary:** Registration allowed with duplicate Email address
+* **Environment:** Staging, Mozilla Firefox, macOS
+* **Severity:** Critical
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open the Registration page.
+  2. Enter a valid username.
+  3. Enter an email address that is already registered in the system (e.g., alex.qa@example.com).
+  4. Enter a valid password and confirm it.
+  5. Click the "Register" button.
+* **Actual Result:** The account is successfully created. The database now contains two different users with the exact same email address.
+* **Expected result:** Registration fails. An error message appears under the Email field: "This email address is already registered" (As per TC_REG_07).
+---
+ID: BUG_SB_03
+* **Summary:** Search field doesn't trim trailing spaces, resulting in "No results found"
+* **Environment:** Production, Safari, iOS
+* **Severity:** Minor
+* **Priority:** Medium
+* **Steps to Reproduce:**
+  1. Open the Homepage.
+  2. Enter a valid product name with spaces at the end into the search bar (e.g., "Phone   ").
+  3. Click the search button.
+* **Actual Result:** The system searches for the literal string with spaces and returns "No results found".
+* **Expected result:** The system automatically trims trailing spaces and displays all matching "Phone" products (As per TC_SB_08).
+---
+ID: BUG_ATC_04
+* **Summary:** Cart counter resets to 0 after refreshing the page
+* **Environment:** Production, Google Chrome, Windows 11
+* **Severity:** Major
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open any product page.
+  2. Click the "Add to cart" button.
+  3. Verify that the cart counter in the header displays "1".
+  4. Press F5 to refresh the page.
+* **Actual Result:** After the page reloads, the cart icon counter changes back to "0", and the cart becomes empty.
+* **Expected result:** The cart state is preserved. The cart counter still displays "1" after the page reload (As per TC_ATC_05).
+---
+ID: BUG_REG_05
+* **Summary:** Registration allowed when Password and Confirm Password do not match
+* **Environment:** Staging, Google Chrome, Windows 11
+* **Severity:** Major
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open the Registration page.
+  2. Fill in valid Username and Email.
+  3. Enter "SecretPass123" into the "Password" field.
+  4. Enter "DifferentPass456" into the "Confirm password" field.
+  5. Click the "Register" button.
+* **Actual Result:** The form is submitted successfully, and the account is created despite mismatched passwords.
+* **Expected result:** Registration is rejected. A validation error appears: "Passwords do not match" (As per TC_REG_05).
+---
+ID: BUG_SB_06
+* **Title:** Application returns 500 Error when search query exceeds 500 characters
+* **Environment:** Production, Mozilla Firefox, macOS
+* **Severity:** Major
+* **Priority:** Medium
+* **Steps to Reproduce:**
+  1. Open the Homepage.
+  2. Paste a 505-character string into the search bar.
+  3. Click the search button.
+* **Actual Result:** The website crashes completely, showing a "500 Internal Server Error" page.
+* **Expected result:** The system handles the input gracefully, truncates it, or simply displays a "No results found" page (As per TC_SB_03).
+---
+ID: BUG_ATC_07
+* **Summary:** User can add items to the cart exceeding the physical stock limit
+* **Environment:** Staging, Google Chrome, Android 14
+* **Severity:** Major
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open a product page where the available stock limit in the database is exactly 3 units.
+  2. Click the "Add to cart" button 5 times consecutively.
+* **Actual Result:** The cart counter updates to "5", allowing the user to proceed to checkout with non-existent stock.
+* **Expected result:** The system blocks the 4th and 5th clicks, displaying a message: "Maximum stock limit reached" (As per TC_ATC_06).
+---
+ID: BUG_ATC_08
+* **Summary:** Item with mandatory attributes can be added to the cart without selecting size/color
+* **Environment:** Production, Safari, iOS 17
+* **Severity:** Major
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Open a clothing product page that strictly requires choosing a Size and Color.
+  2. Do not select any size or color.
+  3. Click the "Add to cart" button.
+* **Actual Result:** The item is successfully added to the cart with blank attributes.
+* **Expected result:** The item is not added. Required attributes are highlighted in red with an error message (As per TC_ATC_03).
+---
+ID: BUG_RP_09
+* **Summary:** Password reset link does not expire after the 24-hour limit
+* **Environment:** Production, Google Chrome, Windows 11
+* **Severity:** Critical
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Request a password reset link for a registered email.
+  2. Wait for 25 hours (or manually expire the token expiration time in the database).
+  3. Click the password reset link inside the received email.
+* **Actual Result:** The password reset page opens successfully, allowing the user to change their account password using an expired link.
+* **Expected result:** The website displays an error: "This password reset link has expired" (As per TC_RP_06).
+---
+ID: BUG_RP_10
+* **Summary:** Password reset link can be reused multiple times
+* **Environment:** Production, Mozilla Firefox, Linux Ubuntu
+* **Severity:** Critical
+* **Priority:** High
+* **Steps to Reproduce:**
+  1. Click the password reset link in the email and successfully change the account password.
+  2. Go back to the same email and click the exact same link a second time.
+* **Actual Result:** The link opens the form again and allows another password modification.
+* **Expected result:** The link is invalidated after the first use. The page displays an error: "This link has already been used" (As per TC_RP_07).
+
